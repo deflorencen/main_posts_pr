@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
+import navigate from "navigate";
 
 export default function Login() {
     const [formData, setFormData] = useState({
@@ -16,7 +17,7 @@ export default function Login() {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        //e.preventDefault();
         try {
             const authString = `${formData.email}:${formData.password}`;
             const authHeader = "Basic " + btoa(authString);
@@ -33,6 +34,9 @@ export default function Login() {
                 localStorage.setItem('auth-token', authHeader);
             }
             console.log("Registration successful:", response.data);
+            navigate('/');
+            window.location.reload();
+
         } catch (error) {
             console.error("Error registering:", error);
         }
@@ -40,7 +44,7 @@ export default function Login() {
 
     return (
         <div className="registrationPage">
-            <h2>Форма регистрации</h2>
+            <h2>Login</h2>
             <form onSubmit={handleSubmit}>
                 <label>
                     Email:
@@ -54,7 +58,7 @@ export default function Login() {
                 </label>
                 <br />
                 <label>
-                    Пароль:
+                    Password:
                     <input
                         type="password"
                         name="password"
@@ -65,7 +69,7 @@ export default function Login() {
                     />
                 </label>
                 <br />
-                <button type="submit">Зарегистрироваться</button>
+                <button type="submit">Login</button>
             </form>
         </div>
     );

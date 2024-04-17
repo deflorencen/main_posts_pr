@@ -25,6 +25,7 @@ export default function Posts() {
                 }
             });
             console.log('Post submitted:', response.data);
+            navigate('/');
         } catch (error) {
             console.error('Error submitting post:', error);
         }

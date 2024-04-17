@@ -4,11 +4,14 @@ const LogoutButton = () => {
 
     const handleLogout = () => {
         localStorage.removeItem("auth-token");
+        window.location.reload();
     };
 
     return (
-        <button onClick={handleLogout}>Logout</button>
+        <div>
+            <a onClick={handleLogout}>Logout</a>
+        </div>
     );
 };
 
-export default LogoutButton;
+export default LogoutButton

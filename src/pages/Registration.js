@@ -29,15 +29,15 @@ export default function Registration() {
 
     return (
         <div className="registrationForm">
-            <h2>Форма регистрации</h2>
+            <h2>Registration form:</h2>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Имя:
+                    First name:
                     <input type="text" name="name" value={formData.name} onChange={handleChange} required />
                 </label>
                 <br />
                 <label>
-                    Фамилия:
+                    Last name:
                     <input type="text" name="surname" value={formData.surname} onChange={handleChange} required />
                 </label>
                 <br />
@@ -47,11 +47,11 @@ export default function Registration() {
                 </label>
                 <br />
                 <label>
-                    Пароль:
+                    Password:
                     <input type="password" name="password" value={formData.password} onChange={handleChange} required />
                 </label>
                 <br />
-                <button type="submit">Зарегистрироваться</button>
+                <button type="submit">Registration</button>
             </form>
         </div>
     );

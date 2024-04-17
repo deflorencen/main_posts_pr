@@ -13,7 +13,10 @@ export default function App() {
     const handleLogout = () => {
         localStorage.removeItem('auth-token');
         setIsLoggedIn(false);
+
     };
+
+
 
     return (
         <Router>
@@ -22,6 +25,7 @@ export default function App() {
                 {isLoggedIn && <Link to="/createpost">Create Post</Link>}
                 {!isLoggedIn && <Link to="/login">Login</Link>}
                 {!isLoggedIn && <Link to="/registration">Registration</Link>}
+                {/*{isLoggedIn && <LogoutButton onLogout={handleLogout} />}*/}
                 {isLoggedIn && <LogoutButton onLogout={handleLogout} />}
             </nav>
             <Routes>
