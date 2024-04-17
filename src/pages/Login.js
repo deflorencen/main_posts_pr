@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import axios from "axios";
 
 export default function Login() {
@@ -6,8 +6,6 @@ export default function Login() {
         email: "",
         password: ""
     });
-
-
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -72,3 +70,6 @@ export default function Login() {
         </div>
     );
 }
+
+
+// ДОБАВИТЬ ФУНКЦИЮ ЛОГАУТА ЯКА ЧИСТИТЬ ЛОКАЛ СТОРАГЕ

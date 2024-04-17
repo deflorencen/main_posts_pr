@@ -1,9 +1,18 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 export default function Posts() {
     const [name, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const authToken = localStorage.getItem("auth-token");
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!authToken) {
+            navigate('/login');
+        }
+    }, [authToken, navigate]);
 
     const handleSubmit = async () => {
         try {
@@ -11,10 +20,10 @@ export default function Posts() {
                 name: name,
                 content: content
             }, {
-                    headers: {
-                        Authorization: localStorage.getItem("auth-token")
-                    }
-                });
+                headers: {
+                    Authorization: authToken
+                }
+            });
             console.log('Post submitted:', response.data);
         } catch (error) {
             console.error('Error submitting post:', error);
