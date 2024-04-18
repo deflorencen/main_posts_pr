@@ -17,7 +17,7 @@ export default function Login() {
     };
 
     const handleSubmit = async (e) => {
-        //e.preventDefault();
+        e.preventDefault();
         try {
             const authString = `${formData.email}:${formData.password}`;
             const authHeader = "Basic " + btoa(authString);
@@ -32,11 +32,15 @@ export default function Login() {
             );
             if (response.status === 200) {
                 localStorage.setItem('auth-token', authHeader);
-            }
-            console.log("Registration successful:", response.data);
-            navigate('/');
-            window.location.reload();
 
+                navigate('/user_panel');
+                window.location.reload();
+                
+                console.log("Registration successful:", response.data);
+            } else {
+                console.log("Response status:", response.status);
+            }
+            
         } catch (error) {
             console.error("Error registering:", error);
         }
@@ -74,6 +78,3 @@ export default function Login() {
         </div>
     );
 }
-
-
-// ДОБАВИТЬ ФУНКЦИЮ ЛОГАУТА ЯКА ЧИСТИТЬ ЛОКАЛ СТОРАГЕ
