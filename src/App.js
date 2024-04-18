@@ -12,7 +12,6 @@ export default function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('auth-token') !== null);
 
     const handleLogout = () => {
-        localStorage.removeItem('auth-token');
         setIsLoggedIn(false);
 
     };
