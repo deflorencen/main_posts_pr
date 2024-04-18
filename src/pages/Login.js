@@ -31,8 +31,11 @@ export default function Login() {
             );
             if (response.status === 200) {
                 localStorage.setItem('auth-token', authHeader);
+                console.log("Registration successful:", response.data);
+            } else {
+                console.log("Response status:", response.status);
             }
-            console.log("Registration successful:", response.data);
+            
         } catch (error) {
             console.error("Error registering:", error);
         }
