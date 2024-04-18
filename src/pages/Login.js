@@ -31,6 +31,8 @@ export default function Login() {
             );
             if (response.status === 200) {
                 localStorage.setItem('auth-token', authHeader);
+                localStorage.setItem("user-id", response.data.user_id)
+                
                 console.log("Registration successful:", response.data);
             } else {
                 console.log("Response status:", response.status);
@@ -43,7 +45,7 @@ export default function Login() {
 
     return (
         <div className="registrationPage">
-            <h2>Форма регистрации</h2>
+            <h2>Login form</h2>
             <form onSubmit={handleSubmit}>
                 <label>
                     Email:
@@ -57,7 +59,7 @@ export default function Login() {
                 </label>
                 <br />
                 <label>
-                    Пароль:
+                    Password:
                     <input
                         type="password"
                         name="password"
@@ -68,7 +70,7 @@ export default function Login() {
                     />
                 </label>
                 <br />
-                <button type="submit">Зарегистрироваться</button>
+                <button type="submit">Login</button>
             </form>
         </div>
     );

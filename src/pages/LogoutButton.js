@@ -16,6 +16,8 @@ const LogoutButton = () => {
         } catch (error) {  
             if(error.response.status === 401){
                 localStorage.removeItem("auth-token");
+                window.location.reload();
+                
                 console.error("User loged out:", error);
             } else {
                 console.log("Unexpected error:", error)
