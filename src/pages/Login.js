@@ -17,7 +17,7 @@ export default function Login() {
     };
 
     const handleSubmit = async (e) => {
-        //e.preventDefault();
+        e.preventDefault();
         try {
             const authString = `${formData.email}:${formData.password}`;
             const authHeader = "Basic " + btoa(authString);
@@ -32,11 +32,13 @@ export default function Login() {
             );
             if (response.status === 200) {
                 localStorage.setItem('auth-token', authHeader);
+                localStorage.setItem("user-id", response.data.user_id)
+                
+                console.log("Registration successful:", response.data);
+            } else {
+                console.log("Response status:", response.status);
             }
-            console.log("Registration successful:", response.data);
-            navigate('/');
-            window.location.reload();
-
+            
         } catch (error) {
             console.error("Error registering:", error);
         }
