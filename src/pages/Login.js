@@ -33,6 +33,9 @@ export default function Login() {
             if (response.status === 200) {
                 localStorage.setItem('auth-token', authHeader);
                 localStorage.setItem("user-id", response.data.user_id)
+
+                navigate('/');
+                window.location.reload();
                 
                 console.log("Registration successful:", response.data);
             } else {
