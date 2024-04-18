@@ -15,17 +15,6 @@ export default function Home() {
         fetchData();
     }, []);
 
-
-    const handleDelete = async (postId) => {
-        try {
-            await axios.delete(`http://127.0.0.1:8000/articles/${postId}`);
-            // После успешного удаления поста, обновляем список постов
-            setPosts(posts.filter(post => post.id !== postId));
-        } catch (error) {
-            console.error('Error deleting post:', error);
-        }
-    };
-
     return (
         <div>
             <div>
@@ -33,7 +22,6 @@ export default function Home() {
                     <div key={post.id} className="post">
                         <h3>{post.name}</h3>
                         <p>{post.content}</p>
-                        <button onClick={() => handleDelete(post.id)}>Delete</button>
                     </div>
                 ))}
             </div>
